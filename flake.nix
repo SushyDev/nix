@@ -13,7 +13,7 @@
 	outputs = inputs@{ self, nixpkgs, nix-darwin, ... }: 
 		{
 			# Rename default to hostname later
-			darwinConfigurations."Sushys-Virtual-Machine" = nix-darwin.lib.darwinSystem {
+			darwinConfigurations."quasar" = nix-darwin.lib.darwinSystem {
 				specialArgs = { 
 					inherit inputs; 
 					setup = rec {
