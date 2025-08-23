@@ -1,4 +1,4 @@
-{ self, lib, pkgs, cfg, config, ... }:
+{ self, setup, ... }:
 {
 	system.defaults = {
 		NSGlobalDomain = {
@@ -32,12 +32,12 @@
 		};
 
 		CustomUserPreferences = {
-			"~${config.system.primaryUser}/Library/Preferences/ByHost/com.apple.dock" = {
+			"~${setup.primaryUser}/Library/Preferences/ByHost/com.apple.dock" = {
 				# Trackpad > More Gestures (I think)
 				# Show Desktop - Off (I think)
 				"showDesktopGestureEnabled" = 0;
 			};
-			"~${config.system.primaryUser}/Library/Preferences/ByHost/com.apple.AppleMultitouchTrackpad" = {
+			"~${setup.primaryUser}/Library/Preferences/ByHost/com.apple.AppleMultitouchTrackpad" = {
 				# Trackpad > Scroll & Zoom
 				# Zoom in or out - On
 				"TrackpadPinch" = 1;

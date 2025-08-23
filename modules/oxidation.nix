@@ -1,4 +1,4 @@
-{ self, pkgs, cfg, ... }: {
+{ self, pkgs, ... }: {
 	environment.shellAliases = {
 		cat = "bat --paging=never --style=plain";
 		ls = "eza";

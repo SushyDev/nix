@@ -1,16 +1,11 @@
-{ self, lib, pkgs, config, ... }:
-let
-	nixGroupName = "nix";
-	primaryUser = "sushy";
-	managedUsers = [ primaryUser ];
-in
+{ self, pkgs, setup, ... }:
 {
-	users.knownGroups = [ nixGroupName ];
+	users.knownGroups = [ setup.nixGroupName ];
 
-	users.groups."${nixGroupName}" = {
-		name = nixGroupName;
+	users.groups."${setup.nixGroupName}" = {
+		name = setup.nixGroupName;
 		gid = 503;
-		members = managedUsers;
+		members = setup.managedUsers;
 	};
 
 	system.activationScripts.setupNixDarwinDirectory = {
@@ -33,8 +28,11 @@ in
 
 	time.timeZone = "Europe/Amsterdam";
 
-	# System settings config
-	system.primaryUser = primaryUser;
+	system.primaryUser = setup.primaryUser;
+
+	# Used for backwards compatibility, please read the changelog before changing.
+	# $ darwin-rebuild changelog
+	system.stateVersion = 6;
 
 	imports = [
 		./submodules/darwin/Appearance.nix

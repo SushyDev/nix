@@ -1,4 +1,4 @@
-{ self, lib, pkgs, cfg, config, ... }:
+{ self, setup, ... }:
 {
 	system.defaults = {
 		NSGlobalDomain = {
@@ -8,7 +8,7 @@
 		};
 
 		CustomUserPreferences = {
-			"~${config.system.primaryUser}/Library/Preferences/ByHost/.GlobalPreferences" = {
+			"~${setup.primaryUser}/Library/Preferences/ByHost/.GlobalPreferences" = {
 				# Double-click a window's title bar to
 				"AppleActionOnDoubleClick" = "Maximize"; # Zoom
 			};

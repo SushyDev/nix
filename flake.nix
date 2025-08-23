@@ -16,6 +16,11 @@
 			darwinConfigurations."Sushys-Virtual-Machine" = nix-darwin.lib.darwinSystem {
 				specialArgs = { 
 					inherit inputs; 
+					setup = rec {
+						primaryUser = "sushy";
+						managedUsers = [ primaryUser "root" ];
+						nixGroupName = "nix";
+					};
 				};
 				system = "aarch64-darwin";
 				modules = [ 

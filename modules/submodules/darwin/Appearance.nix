@@ -1,4 +1,4 @@
-{ self, lib, pkgs, cfg, config, ... }:
+{ self, setup, ... }:
 {
 	system.defaults = {
 		NSGlobalDomain = {
@@ -20,7 +20,7 @@
 		};
 
 		CustomUserPreferences = {
-			"~${config.system.primaryUser}/Library/Preferences/ByHost/.GlobalPreferences" = {
+			"~${setup.primaryUser}/Library/Preferences/ByHost/.GlobalPreferences" = {
 				# Accent color
 				# Pink
 				"AppleAccentColor" = 6;

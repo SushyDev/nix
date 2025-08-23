@@ -1,4 +1,4 @@
-{ self, lib, pkgs, cfg, config, ... }:
+{ self, setup, ... }:
 {
 	system.defaults = {
 		SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
@@ -15,10 +15,10 @@
 		};
 
 		CustomUserPreferences = {
-			"~${config.system.primaryUser}/Library/Preferences/ByHost/.GlobalPreferences" = {
+			"~${setup.primaryUser}/Library/Preferences/ByHost/.GlobalPreferences" = {
 				"AppleMiniaturizeOnDoubleClick" = 0;
 			};
-			"~${config.system.primaryUser}/Library/Preferences/ByHost/com.apple.assistant.support" = {
+			"~${setup.primaryUser}/Library/Preferences/ByHost/com.apple.assistant.support" = {
 				# Spotlight
 				# Help Apple Improve Search - Off
 				"Search Queries Data Sharing Status" = 2;
