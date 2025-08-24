@@ -1,4 +1,4 @@
-{ self, setup, ... }:
+{ self, lib, setup, ... }:
 {
 	system.defaults = {
 		NSGlobalDomain = {
@@ -19,8 +19,8 @@
 			NSTableViewDefaultSizeMode = 2;
 		};
 
-		CustomUserPreferences = {
-			"~${setup.primaryUser}/Library/Preferences/ByHost/.GlobalPreferences" = {
+		CustomUserPreferences = lib.attrsets.mergeAttrsList (lib.map (user: {
+			"~${user}/Library/Preferences/ByHost/.GlobalPreferences" = {
 				# Accent color
 				# Pink
 				"AppleAccentColor" = 6;
@@ -28,6 +28,6 @@
 				# Allow wallpaper tinting in windows
 				"AppleReduceDesktopTinting" = 1;
 			};
-		};
+		}) setup.managedUsers);
 	}; 
 }

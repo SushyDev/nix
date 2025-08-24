@@ -22,5 +22,5 @@
 	nix.enable = false;
 	nix.package = pkgs.nixVersions.stable;
 	nix.settings.experimental-features = "nix-command flakes";
-	nix.settings.trusted-users = base.managedUsers ++ [ "root" ];
+	nix.settings.trusted-users = base.managedUsersAndRoot;
 }

@@ -1,4 +1,4 @@
-{ self, setup, ... }:
+{ self, lib, setup, ... }:
 {
 	system.defaults = {
 		NSGlobalDomain = {
@@ -6,8 +6,8 @@
 			_HIHideMenuBar = false;
 		};
 
-		CustomUserPreferences = {
-			"~${setup.primaryUser}/Library/Preferences/ByHost/com.apple.controlcenter" = {
+		CustomUserPreferences = lib.attrsets.mergeAttrsList (lib.map (user: {
+			"~${user}/Library/Preferences/ByHost/com.apple.controlcenter" = {
 				# Other Modules > Accessibility Shortcuts
 				# Show in Menu Bar = Off
 				# Show in Control Center = Off
@@ -77,16 +77,16 @@
 				# Don't Show in Menu Bar
 				"WiFi" = 8;
 			};
-			"~${setup.primaryUser}/Library/Preferences/ByHost/com.apple.Spotlight" = {
+			"~${user}/Library/Preferences/ByHost/com.apple.Spotlight" = {
 				# Menu Bar Only > Spotlight
 				# Don't Show in Menu Bar
 				"MenuItemHidden" = 1;
 			};
-			"~${setup.primaryUser}/Library/Preferences/ByHost/com.apple.Siri" = {
+			"~${user}/Library/Preferences/ByHost/com.apple.Siri" = {
 				# Menu Bar Only > Siri
 				# Don't Show in Menu Bar
 				"StatusMenuVisible" = 0;
 			};
-		};
+		}) setup.managedUsers);
 	}; 
 }

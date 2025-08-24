@@ -18,7 +18,8 @@
 					inherit inputs; 
 					setup = rec {
 						primaryUser = "sushy";
-						managedUsers = [ primaryUser "root" ];
+						managedUsers = [ primaryUser ];
+						managedUsersAndRoot = [ "root" ] ++ managedUsers;
 						nixGroupName = "nix";
 						nixGroupId = 503;
 						systemFlakePath = "/etc/nixdarwin";

@@ -1,4 +1,4 @@
-{ self, setup, ... }:
+{ self, lib, setup, ... }:
 {
 	system.defaults = {
 		NSGlobalDomain = {
@@ -7,12 +7,12 @@
 			AppleWindowTabbingMode = "fullscreen";
 		};
 
-		CustomUserPreferences = {
-			"~${setup.primaryUser}/Library/Preferences/ByHost/.GlobalPreferences" = {
+		CustomUserPreferences = lib.attrsets.mergeAttrsList (lib.map (user: {
+			"~${user}/Library/Preferences/ByHost/.GlobalPreferences" = {
 				# Double-click a window's title bar to
 				"AppleActionOnDoubleClick" = "Maximize"; # Zoom
 			};
-		};
+		}) setup.managedUsers);
 	
 		# Desktop & Stage Manager
 		# Stage Manager - Off
