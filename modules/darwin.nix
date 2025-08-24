@@ -1,29 +1,29 @@
-{ self, pkgs, setup, ... }:
+{ self, lib, pkgs, setup, ... }:
 {
 	users.knownGroups = [ setup.nixGroupName ];
 
 	users.groups."${setup.nixGroupName}" = {
 		name = setup.nixGroupName;
-		gid = 503;
+		gid = setup.nixGroupId;
 		members = setup.managedUsers;
 	};
 
 	system.activationScripts.setupNixDarwinDirectory = {
 		enable = true;
 		text = ''
-			mkdir -p /etc/nixdarwin
-			chown -R root:nix /etc/nixdarwin
-			chmod -R g+rwX /etc/nixdarwin
+			mkdir -p ${setup.systemFlakePath}
+			chown -R root:nix ${setup.systemFlakePath}
+			chmod -R g+rwX ${setup.systemFlakePath}
 		'';
 	};
 
 	environment.shellAliases = {
-		darwin-rebuild = "sudo ${pkgs.nix}/bin/nix run nix-darwin/master#darwin-rebuild -- switch --flake /etc/nixdarwin";
-		darwin-edit = "${pkgs.neovim}/bin/nvim /etc/nixdarwin";
+		darwin-switch = "sudo ${lib.getExe pkgs.nix} run nix-darwin/master#darwin-rebuild -- switch --flake ${setup.systemFlakePath}";
+		darwin-edit = "${lib.getExe pkgs.neovim} ${setup.systemFlakePath}";
 	};
 
 	security.sudo.extraConfig = ''
-		%nix ALL=(ALL) NOPASSWD: ${pkgs.nix}/bin/nix run nix-darwin/master\#darwin-rebuild -- switch --flake /etc/nixdarwin
+		%nix ALL=(ALL) NOPASSWD: ${pkgs.nix}/bin/nix run nix-darwin/master\#darwin-rebuild -- switch --flake ${setup.systemFlakePath}
 	'';
 
 	time.timeZone = "Europe/Amsterdam";

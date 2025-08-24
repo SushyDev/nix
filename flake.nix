@@ -20,6 +20,8 @@
 						primaryUser = "sushy";
 						managedUsers = [ primaryUser "root" ];
 						nixGroupName = "nix";
+						nixGroupId = 503;
+						systemFlakePath = "/etc/nixdarwin";
 					};
 				};
 				system = "aarch64-darwin";
