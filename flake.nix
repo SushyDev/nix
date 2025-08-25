@@ -8,9 +8,17 @@
 			url = "github:nix-darwin/nix-darwin/master";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		# Include your custom flake locally
+		nix-plist-manager = {
+			url = "path:nix-plist-manager";
+			inputs.nixpkgs.follows = "nixpkgs";
+			# For remote flakes, you would use:
+			# url = "github:your-username/your-repo";
+		};
 	};
 
-	outputs = inputs@{ self, nixpkgs, nix-darwin, ... }: 
+	outputs = inputs@{ self, nixpkgs, nix-darwin, nix-plist-manager, ... }: 
 		{
 			# Rename default to hostname later
 			darwinConfigurations."quasar" = nix-darwin.lib.darwinSystem {
@@ -27,8 +35,10 @@
 				};
 				system = "aarch64-darwin";
 				modules = [ 
+					nix-plist-manager.darwinModules.default
 					./configuration.nix
 					./modules/darwin.nix
+					./modules/plist-manager.nix
 					./modules/oxidation.nix
 					# home-manager.darwinModules.home-manager
 					# {

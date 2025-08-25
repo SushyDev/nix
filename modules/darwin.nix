@@ -32,14 +32,13 @@
 
 	# Used for backwards compatibility, please read the changelog before changing.
 	# $ darwin-rebuild changelog
-	system.stateVersion = 6;
 
-	imports = [
-		./submodules/darwin/Appearance.nix
-		./submodules/darwin/Control_Center.nix
-		./submodules/darwin/Desktop_And_Dock.nix
-		./submodules/darwin/General.nix
-		./submodules/darwin/Keyboard.nix
-		./submodules/darwin/Trackpad.nix
-	];
+	# imports = [
+	# 	./submodules/darwin/Appearance.nix
+	# 	./submodules/darwin/Control_Center.nix
+	# 	./submodules/darwin/Desktop_And_Dock.nix
+	# 	./submodules/darwin/General.nix
+	# 	./submodules/darwin/Keyboard.nix
+	# 	./submodules/darwin/Trackpad.nix
+	# ];
 }
