@@ -19,26 +19,20 @@
 
 	environment.shellAliases = {
 		darwin-switch = "sudo ${lib.getExe pkgs.nix} run nix-darwin/master#darwin-rebuild -- switch --flake ${setup.systemFlakePath}";
+		darwin-update = "sudo ${lib.getExe pkgs.nix} flake update --flake ${setup.systemFlakePath}";
 		darwin-edit = "${lib.getExe pkgs.neovim} ${setup.systemFlakePath}";
 	};
 
 	security.sudo.extraConfig = ''
-		%nix ALL=(ALL) NOPASSWD: ${pkgs.nix}/bin/nix run nix-darwin/master\#darwin-rebuild -- switch --flake ${setup.systemFlakePath}
+		%nix ALL=(ALL) NOPASSWD: ${lib.getExe pkgs.nix} run nix-darwin/master\#darwin-rebuild -- switch --flake ${setup.systemFlakePath}
+		%nix ALL=(ALL) NOPASSWD: ${lib.getExe pkgs.nix} flake update --flake ${setup.systemFlakePath}
 	'';
 
 	time.timeZone = "Europe/Amsterdam";
 
-	system.primaryUser = setup.primaryUser;
+	system.primaryUser = lib.head setup.managedUsers;
+	system.stateVersion = 6;
 
 	# Used for backwards compatibility, please read the changelog before changing.
 	# $ darwin-rebuild changelog
-
-	# imports = [
-	# 	./submodules/darwin/Appearance.nix
-	# 	./submodules/darwin/Control_Center.nix
-	# 	./submodules/darwin/Desktop_And_Dock.nix
-	# 	./submodules/darwin/General.nix
-	# 	./submodules/darwin/Keyboard.nix
-	# 	./submodules/darwin/Trackpad.nix
-	# ];
 }

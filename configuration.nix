@@ -1,4 +1,14 @@
-{ self, pkgs, base, ... }: {
+{ self, pkgs, nixpkgs, sushy, base, inputs, ... }: 
+let
+	sushypkgs = import inputs.sushypkgs {
+		system = "aarch64-darwin";
+		config = {
+			allowUnfree = true;
+		};
+	};
+in
+{
+	nixpkgs.config.allowUnfree = true;
 
 	# List packages installed in system profile. To search by name, run:
 	# $ nix-env -qaP | grep wget
@@ -15,6 +25,7 @@
 		pkgs.difftastic
 		pkgs.go
 		pkgs.utm
+		sushypkgs.ddev
 	];
 
 	# NOT SURE IF THIS IS ACTIVE NO DS NIX
