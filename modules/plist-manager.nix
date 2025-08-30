@@ -1,4 +1,4 @@
-{ self, lib, setup, config, nix-plist-manager, ... }:
+{ setup, nix-plist-manager, ... }:
 {
 	nix-plist-manager = {
 		enable = true;
