@@ -18,45 +18,45 @@
 				};
 			};
 			appearance = {
-				appearance = "dark";
-				accentColor = "pink";
-				sidebarIconSize = "medium";
+				appearance = "Dark";
+				accentColor = "Pink";
+				sidebarIconSize = "Medium";
 				allowWallpaperTintingInWindows = false;
-				showScrollBars = "automatic";
-				clickInTheScrollBarTo = "jumpToTheNextPage";
+				showScrollBars = "Automatically based on mouse or trackpad";
+				clickInTheScrollBarTo = "Jump to the next page";
 			};
 			controlCenter = {
-				WiFi = false;
-				Bluetooth = false;
-				AirDrop = false;
-				FocusModes = "never";
-				StageManager = false;
-				ScreenMirroring = "active";
-				Display = "never";
-				Sound = "never";
-				NowPlaying = "never";
-				AccessibilityShortcuts = {
+				wifi = false;
+				bluetooth = false;
+				airdrop = false;
+				focusModes = "never";
+				stageManager = false;
+				screenMirroring = "active";
+				display = "never";
+				sound = "never";
+				nowPlaying = "never";
+				accessibilityShortcuts = {
 					showInMenuBar = false;
 					showInControlCenter = false;
 				};
-				Battery = {
+				battery = {
 					showInMenuBar = true;
 					showInControlCenter = false;
 				};
-				BatteryShowPercentage = true;
-				MusicRecognition = {
+				batteryShowPercentage = true;
+				musicRecognition = {
 					showInMenuBar = false;
 					showInControlCenter = false;
 				};
-				Hearing = {
+				hearing = {
 					showInMenuBar = false;
 					showInControlCenter = false;
 				};
-				FastUserSwitching = {
+				fastUserSwitching = {
 					showInMenuBar = false;
 					showInControlCenter = true;
 				};
-				KeyboardBrightness = {
+				keyboardBrightness = {
 					showInMenuBar = false;
 					showInControlCenter = false;
 				};
@@ -73,9 +73,9 @@
 						enabled = false;
 						size = 30;
 					};
-					positionOnScreen = "bottom";
-					minimizeWindowsUsing = "genie";
-					doubleClickAWindowsTitleBarTo = "fill";
+					positionOnScreen = "Bottom";
+					minimizeWindowsUsing = "Genie Effect";
+					doubleClickAWindowsTitleBarTo = "Fill";
 					minimizeWindowsIntoApplicationIcon = true;
 					automaticallyHideAndShowTheDock = {
 						enabled = true;
@@ -98,21 +98,21 @@
 						onDesktop = false;
 						inStageManager = false;
 					};
-					clickWallpaperToRevealDesktop = "onlyInStageManager";
+					clickWallpaperToRevealDesktop = "Only in Stage Manager";
 					stageManager = false;
 					showRecentAppsInStageManager = false;
-					showWindowsFromAnApplication = "oneAtATime";
+					showWindowsFromAnApplication = "One at a Time";
 				};
 				widgets = {
 					showWidgets = {
 						onDesktop = false;
 						inStageManager = false;
 					};
-					widgetStyle = "automatic";
+					widgetStyle = "Automatic";
 					useIphoneWidgets = false;
 				};
 				windows = {
-					preferTabsWhenOpeningDocuments = "never";
+					preferTabsWhenOpeningDocuments = "Never";
 					askToKeepChangesWhenClosingDocuments = false;
 					closeWindowsWhenQuittingAnApplication = false;
 					dragWindowsToScreenEdgesToTile = false;
@@ -128,10 +128,10 @@
 					dragWindowsToTopOfScreenToEnterMissionControl = false;
 				};
 				hotCorners = {
-					topLeft = "disabled";
-					topRight = "disabled";
-					bottomLeft = "disabled";
-					bottomRight = "disabled";
+					topLeft = "-";
+					topRight = "-";
+					bottomLeft = "-";
+					bottomRight = "-";
 				};
 			};
 			# TODO Displays
@@ -165,7 +165,7 @@
 			};
 			notifications = {
 				notificationCenter = {
-					showPreviews = "whenUnlocked";
+					showPreviews = "When Unlocked";
 					summarizeNotifications = true;
 				};
 			};

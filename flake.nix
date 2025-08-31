@@ -12,10 +12,9 @@
 
 		# Include your custom flake locally
 		nix-plist-manager = {
-			url = "git+file:///Users/sushy/Documents/Projects/nix-plist-manager";
+			# url = "path:/Users/sushy/Documents/Projects/nix-plist-manager";
+			url = "github:sushydev/nix-plist-manager?ref=main";
 			inputs.nixpkgs.follows = "nixpkgs";
-			# For remote flakes, you would use:
-			# url = "github:your-username/your-repo";
 		};
 	};
 
