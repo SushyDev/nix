@@ -86,12 +86,12 @@
 					showIndicatorsForOpenApplications = true;
 					showSuggestedAndRecentAppsInDock = false;
 					persistentApps = [
-						{ app = "/Applications/Ghostty.app"; }
-						{ app = "/Applications/Spotify.app"; }
-						{ app = "/Applications/Vivaldi.app"; }
-						{ app = "/Users/sushy/Applications/Discord.app"; }
+						{ app = "/Applications/Nix Apps/Ghostty.app"; }
+						{ app = "/Applications/Nix Apps/Spotify.app"; }
+						{ app = "/Applications/Nix Apps/Vivaldi.app"; }
+						# { app = "/Users/sushy/Applications/Home Manager Apps/Discord.app"; }
 					];
-					persistentOthers = [];
+					persistentOthers = [ ];
 				};
 				desktopAndStageManager = {
 					showItems = {
@@ -184,7 +184,7 @@
 				keyboardBrightness = 1.0;
 				turnKeyboardBacklightOffAfterInactivity = "After 5 Minutes";
 				pressGlobeKeyTo = "Do Nothing";
-				keyboardNavigation = false;
+				keyboardNavigation = true;
 				keyboardShortcuts = {
 					functionKeys = {
 						useF1F2EtcAsStandardFunctionKeys = true;
@@ -201,8 +201,43 @@
 				tapToClick = false;
 			};
 		};
-		finder = {
-			removeItemsFromTheTrashAfter30Days = true;
+		applications = {
+			finder = {
+				settings = {
+					general = {
+						showTheseItemsOnTheDesktop = {
+							hardDisks = true;
+							externalDisks = true;
+							cdsDvdsAndiPods = true;
+							connectedServers = true;
+						};
+						openFoldersInTabsInsteadOfNewWindows = true;
+					};
+					sidebar = {
+						recentTags = false;
+					};
+					advanced = {
+						showAllFilenameExtensions = true;
+						showWarningBeforeChangingAnExtension = true;
+						showWarningBeforeEmptyingTheTrash = true;
+						showWarningBeforeRemovingFromiCloudDrive = true;
+						removeItemsFromTheTrashAfter30Days = true;
+						keepFoldersOnTop = {
+							inWindowsWhenSortingByName = true;
+							onDesktop = true;
+						};
+						whenPerformingASearch = "Search the Current Folder";
+					};
+				};
+				menuBar = {
+					view = {
+						showTabBar = true;
+						showSidebar = true;
+						showPathBar = true;
+						showStatusBar = true;
+					};
+				};
+			};
 		};
 	};
 }

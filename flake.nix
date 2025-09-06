@@ -10,42 +10,49 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
-		# Include your custom flake locally
+		home-manager = {
+			url = "github:nix-community/home-manager";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+
 		nix-plist-manager = {
-			# url = "path:/Users/sushy/Documents/Projects/nix-plist-manager";
-			url = "github:sushydev/nix-plist-manager?ref=main";
+			url = "path:/Users/sushy/Documents/Projects/nix-plist-manager";
+			# url = "github:sushydev/nix-plist-manager?ref=main";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+
+		nix-darwin-apps = {
+			url = "path:/Users/sushy/Documents/Projects/nix-darwin-apps";
+			# url = "github:sushydev/nix-darwin-apps?ref=main";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 	};
 
-	outputs = inputs@{ self, nixpkgs, sushypkgs, nix-darwin, nix-plist-manager, ... }: 
+	outputs = inputs@{ self, nixpkgs, sushypkgs, nix-darwin, home-manager, nix-plist-manager, ... }: 
 		{
 			# Rename default to hostname later
-			darwinConfigurations."quasar" = nix-darwin.lib.darwinSystem {
+			darwinConfigurations."quasar" = nix-darwin.lib.darwinSystem rec {
+				system = "aarch64-darwin";
 				specialArgs = { 
-					inherit inputs; 
+					inherit inputs system; 
 					setup = rec {
 						primaryUser = "sushy";
-						managedUsers = [ primaryUser ];
+						managedUsers = [ primaryUser "work" ];
 						managedUsersAndRoot = [ "root" ] ++ managedUsers;
 						nixGroupName = "nix";
 						nixGroupId = 503;
 						systemFlakePath = "/etc/nixdarwin";
 					};
 				};
-				system = "aarch64-darwin";
 				modules = [ 
 					nix-plist-manager.darwinModules.default
 					./configuration.nix
 					./modules/darwin.nix
 					./modules/plist-manager.nix
 					./modules/oxidation.nix
-					# home-manager.darwinModules.home-manager
-					# {
-					# 	home-manager.useGlobalPkgs = true;
-					# 	home-manager.useUserPackages = true;
-					# 	home-manager.users.sushy = import ./home.nix;
-					# }
+
+					home-manager.darwinModules.home-manager
+					./modules/home-manager.nix
 				];
 			};
 

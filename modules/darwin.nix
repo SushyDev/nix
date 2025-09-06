@@ -1,5 +1,15 @@
 { self, lib, pkgs, setup, ... }:
 {
+	users.users.sushy = {
+		home = "/Users/sushy";
+		shell = pkgs.zsh;
+	};
+
+	users.users.work = {
+		home = "/Users/work";
+		shell = pkgs.zsh;
+	};
+
 	users.knownGroups = [ setup.nixGroupName ];
 
 	users.groups."${setup.nixGroupName}" = {
