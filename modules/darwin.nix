@@ -1,25 +1,28 @@
 { self, lib, pkgs, setup, ... }:
 {
-	users.users.sushy = {
-		home = "/Users/sushy";
-		shell = pkgs.zsh;
-	};
-
-	users.users.work = {
-		home = "/Users/work";
-		shell = pkgs.zsh;
-	};
-
-	users.knownGroups = [ setup.nixGroupName ];
-
 	users.groups."${setup.nixGroupName}" = {
 		name = setup.nixGroupName;
 		gid = setup.nixGroupId;
 		members = setup.managedUsers;
 	};
 
+	users.knownGroups = [ setup.nixGroupName ];
+
+	users.users.sushy = {
+		home = "/Users/sushy";
+		createHome = true;
+		uid = 502;
+	};
+
+	users.users.work = {
+		home = "/Users/work";
+		createHome = true;
+		uid = 501;
+	};
+
+	users.knownUsers = setup.managedUsers ++ [];
+
 	system.activationScripts.setupNixDarwinDirectory = {
-		enable = true;
 		text = ''
 			mkdir -p ${setup.systemFlakePath}
 			chown -R root:nix ${setup.systemFlakePath}
@@ -38,10 +41,15 @@
 		%nix ALL=(ALL) NOPASSWD: ${lib.getExe pkgs.nix} flake update --flake ${setup.systemFlakePath}
 	'';
 
+	environment.pathsToLink = [ 
+		"/share/zsh"
+	];
+
 	time.timeZone = "Europe/Amsterdam";
 
 	system.primaryUser = lib.head setup.managedUsers;
 	system.stateVersion = 6;
+	system.startup.chime = false;
 
 	# Used for backwards compatibility, please read the changelog before changing.
 	# $ darwin-rebuild changelog
