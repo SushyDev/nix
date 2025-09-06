@@ -16,14 +16,14 @@
 		};
 
 		nix-plist-manager = {
-			url = "path:/Users/sushy/Documents/Projects/nix-plist-manager";
-			# url = "github:sushydev/nix-plist-manager?ref=main";
+			# url = "path:/Users/sushy/Documents/Projects/nix-plist-manager";
+			url = "github:sushydev/nix-plist-manager?ref=main";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
 		nix-darwin-apps = {
-			url = "path:/Users/sushy/Documents/Projects/nix-darwin-apps";
-			# url = "github:sushydev/nix-darwin-apps?ref=main";
+			# url = "path:/Users/sushy/Documents/Projects/nix-darwin-apps";
+			url = "github:sushydev/nix-darwin-apps?ref=main";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 	};

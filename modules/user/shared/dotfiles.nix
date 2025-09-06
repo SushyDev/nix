@@ -3,7 +3,7 @@ let
 	dotfiles = builtins.fetchGit {
 		url = "https://github.com/sushydev/dotfiles";
 		ref = "main";
-		rev = "6e3fd66fc23e73b11aa8509725ed3411611a73d5";
+		rev = "29e95c29215d85d39e971237e995c6ac3b410da8";
 		submodules = true;
 	};
 in

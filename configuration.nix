@@ -41,6 +41,7 @@ in
 		pkgs.opencode
 		pkgs.qemu
 		pkgs.difftastic
+		pkgs.nodejs
 
 		pkgs.openssh
 		pkgs.stow
