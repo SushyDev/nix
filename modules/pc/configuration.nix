@@ -3,7 +3,7 @@
 	imports = [
 		./system/default.nix
 		../shared/oxidation.nix
-		./hardon.nix 
+		# ./hardon.nix 
 	];
 
 	environment.systemPackages = [
@@ -37,4 +37,5 @@
 	virtualisation.docker.enableOnBoot = false;
 
 	programs.fuse.userAllowOther = true;
+	programs.zsh.enable = true;
 }

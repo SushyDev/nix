@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ setup, pkgs, ... }:
 {
 	imports = [ 
 		./nix.nix
