@@ -1,4 +1,4 @@
-{ setup, nix-plist-manager, ... }:
+{ setup, ... }:
 {
 	nix-plist-manager = {
 		enable = true;
@@ -101,7 +101,7 @@
 					clickWallpaperToRevealDesktop = "Only in Stage Manager";
 					stageManager = false;
 					showRecentAppsInStageManager = false;
-					showWindowsFromAnApplication = "One at a Time";
+					showWindowsFromAnApplication = "One at Time";
 				};
 				widgets = {
 					showWidgets = {

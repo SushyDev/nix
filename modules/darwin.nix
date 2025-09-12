@@ -11,13 +11,17 @@
 	users.users.sushy = {
 		home = "/Users/sushy";
 		createHome = true;
+		isHidden = false;
 		uid = 502;
+		shell = pkgs.zsh;
 	};
 
 	users.users.work = {
 		home = "/Users/work";
 		createHome = true;
+		isHidden = false;
 		uid = 501;
+		shell = pkgs.zsh;
 	};
 
 	users.knownUsers = setup.managedUsers ++ [];

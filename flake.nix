@@ -16,14 +16,14 @@
 		};
 
 		nix-plist-manager = {
-			# url = "path:/Users/sushy/Documents/Projects/nix-plist-manager";
-			url = "github:sushydev/nix-plist-manager?ref=main";
+			url = "path:/Users/sushy/Documents/Projects/nix-plist-manager-v2";
+			# url = "github:sushydev/nix-plist-manager?ref=main";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
 		nix-darwin-apps = {
-			# url = "path:/Users/sushy/Documents/Projects/nix-darwin-apps";
-			url = "github:sushydev/nix-darwin-apps?ref=main";
+			url = "path:/Users/sushy/Documents/Projects/nix-darwin-apps";
+			# url = "github:sushydev/nix-darwin-apps?ref=main";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 	};
@@ -33,8 +33,8 @@
 			# Rename default to hostname later
 			darwinConfigurations."quasar" = nix-darwin.lib.darwinSystem rec {
 				system = "aarch64-darwin";
-				specialArgs = { 
-					inherit inputs system; 
+				specialArgs = {
+					inherit inputs system;
 					setup = rec {
 						primaryUser = "sushy";
 						managedUsers = [ primaryUser "work" ];
@@ -44,17 +44,17 @@
 						systemFlakePath = "/etc/nixdarwin";
 					};
 				};
-				modules = [ 
-					nix-plist-manager.darwinModules.default
+				modules = [
 					./configuration.nix
 					./modules/darwin.nix
-					./modules/plist-manager.nix
 					./modules/oxidation.nix
+
+					nix-plist-manager.darwinModules.default
+					./modules/plist-manager-v2.nix
 
 					home-manager.darwinModules.home-manager
 					./modules/home-manager.nix
 				];
 			};
-
 		};
 }

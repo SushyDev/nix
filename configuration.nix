@@ -51,16 +51,18 @@ in
 		pkgs.ghostty
 		pkgs.spotify
 		pkgs.setapp
-		pkgs.orbstack
-		pkgs.google-chrome-canary
+		# pkgs.google-chrome-canary
+		pkgs.dbeaver
 		# pkgs.cloudflare-warp-gui
 
 		# In nixpkgs
 		pkgs._1password-gui-beta
 		pkgs.raycast
 		pkgs.firefox
+		pkgs.obsidian
 
 		# sushypkgs.ddev
+		pkgs.ddev
 
 		# inputs.nix-darwin-apps.packages.${system}.vivaldi
 	];
