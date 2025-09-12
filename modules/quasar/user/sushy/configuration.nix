@@ -2,7 +2,7 @@
 {
 	imports = [
 		inputs.nix-plist-manager.homeManagerModules.default
-		../shared/dotfiles.nix
+		../../../shared/users/shared/dotfiles.nix
 	];
 
 	home.packages = [ 

@@ -37,11 +37,11 @@ in
 		pkgs.fnm
 		pkgs.neovim
 		pkgs.fzf
-		pkgs.glab
+		pkgs.glab # Move to work
 		pkgs.opencode
 		pkgs.qemu
 		pkgs.difftastic
-		pkgs.nodejs
+		pkgs.nodejs # Remove
 
 		pkgs.openssh
 		pkgs.stow

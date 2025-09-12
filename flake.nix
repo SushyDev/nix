@@ -16,20 +16,45 @@
 		};
 
 		nix-plist-manager = {
-			url = "path:/Users/sushy/Documents/Projects/nix-plist-manager-v2";
-			# url = "github:sushydev/nix-plist-manager?ref=main";
+			# url = "path:/Users/sushy/Documents/Projects/nix-plist-manager-v2";
+			url = "github:sushydev/nix-plist-manager?ref=main";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
 		nix-darwin-apps = {
-			url = "path:/Users/sushy/Documents/Projects/nix-darwin-apps";
-			# url = "github:sushydev/nix-darwin-apps?ref=main";
+			# url = "path:/Users/sushy/Documents/Projects/nix-darwin-apps";
+			url = "github:sushydev/nix-darwin-apps?ref=main";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 	};
 
 	outputs = inputs@{ self, nixpkgs, sushypkgs, nix-darwin, home-manager, nix-plist-manager, ... }: 
 		{
+			
+			nixosConfigurations.pc = nixpkgs.lib.nixosSystem {
+				specialArgs = {
+					inherit inputs;
+					setup = rec {
+						primaryUser = "sushy";
+						managedUsers = [ primaryUser ];
+						managedUsersAndRoot = [ "root" ] ++ managedUsers;
+						nixGroupMembers = [ primaryUser ];
+						nixGroupName = "nix";
+						nixGroupId = 101;
+						systemFlakePath = "/etc/nixos";	
+					};
+				};
+				modules = [
+					./modules/shared/oxidation.nix
+
+					./modules/pc/configuration.nix 
+					# ./modules/pc/hardon.nix 
+
+					home-manager.nixosModules.home-manager
+					./modules/pc/home-manager.nix
+				];
+			};
+
 			# Rename default to hostname later
 			darwinConfigurations."quasar" = nix-darwin.lib.darwinSystem rec {
 				system = "aarch64-darwin";
@@ -45,9 +70,10 @@
 					};
 				};
 				modules = [
+					./modules/shared/oxidation.nix
+
 					./modules/quasar/configuration.nix
 					./modules/quasar/darwin.nix
-					./modules/quasar/oxidation.nix
 
 					nix-plist-manager.darwinModules.default
 					./modules/quasar/plist-manager-v2.nix
