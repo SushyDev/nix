@@ -45,15 +45,15 @@
 					};
 				};
 				modules = [
-					./configuration.nix
-					./modules/darwin.nix
-					./modules/oxidation.nix
+					./modules/quasar/configuration.nix
+					./modules/quasar/darwin.nix
+					./modules/quasar/oxidation.nix
 
 					nix-plist-manager.darwinModules.default
-					./modules/plist-manager-v2.nix
+					./modules/quasar/plist-manager-v2.nix
 
 					home-manager.darwinModules.home-manager
-					./modules/home-manager.nix
+					./modules/quasar/home-manager.nix
 				];
 			};
 		};

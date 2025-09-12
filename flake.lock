@@ -65,8 +65,8 @@
         ]
       },
       "locked": {
-        "lastModified": 1757619330,
-        "narHash": "sha256-xqfKMxkaCePYYaMK3/pvVZqa9mxuEfCDkSCyuLRvGes=",
+        "lastModified": 1757703071,
+        "narHash": "sha256-6lWsFa1J2B6aoqzVnJAZYot8modIyEgtrDurPnzBkYI=",
         "path": "/Users/sushy/Documents/Projects/nix-plist-manager-v2",
         "type": "path"
       },
