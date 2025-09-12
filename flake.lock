@@ -1,23 +1,5 @@
 {
   "nodes": {
-    "flake-utils": {
-      "inputs": {
-        "systems": "systems"
-      },
-      "locked": {
-        "lastModified": 1731533236,
-        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -66,40 +48,31 @@
         ]
       },
       "locked": {
-        "lastModified": 1757196408,
-        "narHash": "sha256-/sFpttAcxRqyfElCONKKOwNb20AwIxWcAEGmRgRqjg8=",
-        "owner": "sushydev",
-        "repo": "nix-darwin-apps",
-        "rev": "465c33c3d3fe30949cc55edd6e0000bf31e6bb41",
-        "type": "github"
+        "lastModified": 1757619388,
+        "narHash": "sha256-4A0XQZ7p1AfHpbIK6IS77W5XQjS8CAmhum0w4UiTdAg=",
+        "path": "/Users/sushy/Documents/Projects/nix-darwin-apps",
+        "type": "path"
       },
       "original": {
-        "owner": "sushydev",
-        "ref": "main",
-        "repo": "nix-darwin-apps",
-        "type": "github"
+        "path": "/Users/sushy/Documents/Projects/nix-darwin-apps",
+        "type": "path"
       }
     },
     "nix-plist-manager": {
       "inputs": {
-        "flake-utils": "flake-utils",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1756757912,
-        "narHash": "sha256-I3JefDvTscSbb9/b0oP0MpO9vzJktm89NMZXh2vUT/o=",
-        "owner": "sushydev",
-        "repo": "nix-plist-manager",
-        "rev": "82d6f886b5a5afe4325b2a511a1ca8245b71f989",
-        "type": "github"
+        "lastModified": 1757703071,
+        "narHash": "sha256-6lWsFa1J2B6aoqzVnJAZYot8modIyEgtrDurPnzBkYI=",
+        "path": "/Users/sushy/Documents/Projects/nix-plist-manager-v2",
+        "type": "path"
       },
       "original": {
-        "owner": "sushydev",
-        "ref": "main",
-        "repo": "nix-plist-manager",
-        "type": "github"
+        "path": "/Users/sushy/Documents/Projects/nix-plist-manager-v2",
+        "type": "path"
       }
     },
     "nixpkgs": {
@@ -141,21 +114,6 @@
         "owner": "SushyDev",
         "ref": "master",
         "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "systems": {
-      "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
         "type": "github"
       }
     }

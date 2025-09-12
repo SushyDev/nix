@@ -16,14 +16,14 @@
 		};
 
 		nix-plist-manager = {
-			# url = "path:/Users/sushy/Documents/Projects/nix-plist-manager-v2";
-			url = "github:sushydev/nix-plist-manager?ref=main";
+			url = "path:/Users/sushy/Documents/Projects/nix-plist-manager-v2";
+			# url = "github:sushydev/nix-plist-manager?ref=main";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
 		nix-darwin-apps = {
-			# url = "path:/Users/sushy/Documents/Projects/nix-darwin-apps";
-			url = "github:sushydev/nix-darwin-apps?ref=main";
+			url = "path:/Users/sushy/Documents/Projects/nix-darwin-apps";
+			# url = "github:sushydev/nix-darwin-apps?ref=main";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 	};
@@ -45,10 +45,8 @@
 					};
 				};
 				modules = [
-					./modules/shared/oxidation.nix
 
 					./modules/pc/configuration.nix 
-					# ./modules/pc/hardon.nix 
 
 					home-manager.nixosModules.home-manager
 					./modules/pc/home-manager.nix
@@ -70,8 +68,6 @@
 					};
 				};
 				modules = [
-					./modules/shared/oxidation.nix
-
 					./modules/quasar/configuration.nix
 					./modules/quasar/darwin.nix
 

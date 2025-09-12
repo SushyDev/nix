@@ -2,20 +2,14 @@
 {
 	imports = [
 		./system/default.nix
+		../shared/oxidation.nix
+		./hardon.nix 
 	];
 
 	environment.systemPackages = [
-		pkgs.git
-			pkgs.tmux
-			pkgs.fnm
-			pkgs.neovim
-			pkgs.fzf
-			pkgs.opencode
-			pkgs.qemu
-			pkgs.difftastic
-			pkgs.gnumake
-
-			pkgs.ntfs3g
+		pkgs.opencode
+		pkgs.qemu
+		pkgs.ntfs3g
 	];
 
 	services.openssh = {

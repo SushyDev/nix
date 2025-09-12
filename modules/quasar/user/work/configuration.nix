@@ -2,13 +2,14 @@
 {
 	imports = [
 		inputs.nix-plist-manager.homeManagerModules.default
-		../shared/dotfiles.nix
+		../../../shared/users/shared/dotfiles.nix
 	];
 
 	home.packages = [ 
 		pkgs.slack
 		pkgs.phpstorm
 		pkgs.orbstack
+		pkgs.glab
 	];
 
 	programs.nix-plist-manager = {

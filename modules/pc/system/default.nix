@@ -13,6 +13,13 @@
 	boot.loader.efi.canTouchEfiVariables = true;
 	boot.kernelPackages = pkgs.linuxPackages_latest;
 
+	system.activationScripts.setupSystemFlake = {
+		text = ''
+			mkdir -p ${setup.systemFlakePath}
+			chown -R root:nix ${setup.systemFlakePath}
+			chmod -R g+rwX ${setup.systemFlakePath}
+		'';
+	};
 
 	time.timeZone = "Europe/Amsterdam";
 

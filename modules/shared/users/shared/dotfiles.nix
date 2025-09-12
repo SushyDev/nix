@@ -8,6 +8,18 @@ let
 	};
 in
 {
+	home.packages = [
+		pkgs.git
+		pkgs.difftastic
+		pkgs.fd
+		pkgs.fnm
+		pkgs.fzf
+		pkgs.neovim
+		pkgs.nodejs
+		pkgs.ripgrep
+		pkgs.tmux
+	];
+
 	home.activation.dotfiles = ''
 		readonly PATH="${pkgs.stow}/bin:$PATH";
 

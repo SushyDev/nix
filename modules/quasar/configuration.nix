@@ -26,22 +26,20 @@ let
 
 in
 {
+	imports = [
+		./darwin.nix
+		./plist-manager-v2.nix
+		../shared/oxidation.nix
+	];
+
 	nixpkgs.overlays = [ inputs.nix-darwin-apps.overlays.default ];
 	nixpkgs.config.allowUnfree = true;
 
 	# List packages installed in system profile. To search by name, run:
 	# $ nix-env -qaP | grep wget
 	environment.systemPackages = [
-		pkgs.git
-		pkgs.tmux
-		pkgs.fnm
-		pkgs.neovim
-		pkgs.fzf
-		pkgs.glab # Move to work
 		pkgs.opencode
 		pkgs.qemu
-		pkgs.difftastic
-		pkgs.nodejs # Remove
 
 		pkgs.openssh
 		pkgs.stow
