@@ -14,7 +14,7 @@
 	];
 
  	programs.git = {
- 		userEmail = "xsushy@hotmail.com";
+ 		userEmail = "mail@sushy.dev";
  		userName = "SushyDev";
  		signing.key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIImyhNk+raDf5TXHFWOyWIKw8IQapkhwJ5e+iLQydSFR";
  	};
