@@ -1,8 +1,10 @@
 { pkgs, inputs, ... }:
 {
 	imports = [
-		../../../shared/users/shared/dotfiles.nix
+		inputs.dotfiles.homeManagerModules.default
 	];
+
+	dotfiles.enable = true;
 
  	programs.git = {
  		userEmail = "mail@sushy.dev";

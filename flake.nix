@@ -26,6 +26,12 @@
 			# url = "github:sushydev/nix-darwin-apps?ref=main";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		dotfiles = {
+			type = "git";
+			url = "ssh://git@github.com/sushydev/dotfiles";
+			submodules = true;
+		};
 	};
 
 	outputs = inputs@{ self, nixpkgs, sushypkgs, nix-darwin, home-manager, nix-plist-manager, ... }: 

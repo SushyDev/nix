@@ -1,9 +1,11 @@
-{ pkgs, inputs, ... }:
+{ config, pkgs, inputs, ... }:
 {
 	imports = [
 		inputs.nix-plist-manager.homeManagerModules.default
-		../../../shared/users/shared/dotfiles.nix
+		inputs.dotfiles.homeManagerModules.default
 	];
+
+	dotfiles.enable = true;
 
 	home.packages = [ 
 		pkgs.go
@@ -18,6 +20,7 @@
  		userName = "SushyDev";
  		signing.key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIImyhNk+raDf5TXHFWOyWIKw8IQapkhwJ5e+iLQydSFR";
  	};
+
 
 	programs.nix-plist-manager = {
 		enable = true;

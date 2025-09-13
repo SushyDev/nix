@@ -2,8 +2,10 @@
 {
 	imports = [
 		inputs.nix-plist-manager.homeManagerModules.default
-		../../../shared/users/shared/dotfiles.nix
+		inputs.dotfiles.homeManagerModules.default
 	];
+
+	dotfiles.enable = true;
 
 	home.packages = [ 
 		pkgs.slack

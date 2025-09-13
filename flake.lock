@@ -1,5 +1,22 @@
 {
   "nodes": {
+    "dotfiles": {
+      "locked": {
+        "lastModified": 1757762350,
+        "narHash": "sha256-qnHQgqB7n+7veEiZP0MrWf4Mw2mcoj+HZaAS5MB2MJM=",
+        "ref": "refs/heads/main",
+        "rev": "91d8c329fb11288a595499022ec7b6f9f86fcf3d",
+        "revCount": 93,
+        "submodules": true,
+        "type": "git",
+        "url": "ssh://git@github.com/sushydev/dotfiles"
+      },
+      "original": {
+        "submodules": true,
+        "type": "git",
+        "url": "ssh://git@github.com/sushydev/dotfiles"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -93,6 +110,7 @@
     },
     "root": {
       "inputs": {
+        "dotfiles": "dotfiles",
         "home-manager": "home-manager",
         "nix-darwin": "nix-darwin",
         "nix-darwin-apps": "nix-darwin-apps",
