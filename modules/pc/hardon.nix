@@ -1,4 +1,4 @@
-{ self, ... }: 
+{ ... }:
 {
 	systemd.services."*".serviceConfig = {
 		ProtectSystem = "strict";

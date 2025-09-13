@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, setup, ... }:
+{ inputs, ... }:
 {
 	home-manager.useGlobalPkgs = true;
 	home-manager.useUserPackages = true;

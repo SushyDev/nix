@@ -1,4 +1,4 @@
-{ setup, pkgs, ... }:
+{ setup, ... }:
 {
 	imports = [ 
 		./nix.nix
@@ -8,10 +8,6 @@
 		./hardware-configuration.nix
 		./additional-hardware-configuration.nix
 	];
-
-	boot.loader.systemd-boot.enable = true;
-	boot.loader.efi.canTouchEfiVariables = true;
-	boot.kernelPackages = pkgs.linuxPackages_latest;
 
 	system.activationScripts.setupSystemFlake = {
 		text = ''

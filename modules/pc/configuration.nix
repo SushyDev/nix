@@ -10,6 +10,8 @@
 		pkgs.opencode
 		pkgs.qemu
 		pkgs.ntfs3g
+		pkgs.cage
+		pkgs.ghostty
 	];
 
 	services.openssh = {
@@ -38,4 +40,8 @@
 
 	programs.fuse.userAllowOther = true;
 	programs.zsh.enable = true;
+
+	i18n.defaultLocale = "en_US.UTF-8";
+	console.earlySetup = true;
+	fonts.packages = [ pkgs.fira-code ];
 }
