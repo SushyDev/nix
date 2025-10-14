@@ -1,4 +1,4 @@
-{ self, pkgs, nixpkgs, sushy, base, inputs, system, ... }:
+{ self, config, pkgs, nixpkgs, sushy, base, inputs, system, ... }:
 let
 	sushypkgs = 
 		let
@@ -38,25 +38,26 @@ in
 	# List packages installed in system profile. To search by name, run:
 	# $ nix-env -qaP | grep wget
 	environment.systemPackages = [
-		pkgs.opencode
-		pkgs.qemu
+		# pkgs.opencode
+		# pkgs.qemu
 
 		pkgs.openssh
-		pkgs.stow
+		# pkgs.stow
 
 		# My own overlay
-		pkgs.vivaldi
-		pkgs.ghostty
-		pkgs.spotify
-		pkgs.setapp
-		# pkgs.google-chrome-canary
+		# # pkgs.cloudflare-warp-gui
+		# # pkgs.google-chrome-canary
 		pkgs.dbeaver
-		# pkgs.cloudflare-warp-gui
+		pkgs.ghostty
+		pkgs.orbstack
+		pkgs.setapp
+		pkgs.spotify
+		pkgs.vivaldi
 
 		# In nixpkgs
 		pkgs._1password-gui-beta
 		pkgs.raycast
-		pkgs.firefox
+		# pkgs.firefox
 		pkgs.obsidian
 
 		# sushypkgs.ddev

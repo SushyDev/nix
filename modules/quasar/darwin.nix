@@ -26,13 +26,11 @@
 
 	users.knownUsers = setup.managedUsers ++ [];
 
-	system.activationScripts.setupNixDarwinDirectory = {
-		text = ''
-			mkdir -p ${setup.systemFlakePath}
-			chown -R root:nix ${setup.systemFlakePath}
-			chmod -R g+rwX ${setup.systemFlakePath}
-		'';
-	};
+	system.activationScripts.extraActivation.text = lib.mkAfter ''
+		mkdir -p ${setup.systemFlakePath}
+		chown -R root:nix ${setup.systemFlakePath}
+		chmod -R g+rwX ${setup.systemFlakePath}
+	'';
 
 	environment.shellAliases = {
 		darwin-switch = "sudo ${lib.getExe pkgs.nix} run nix-darwin/master#darwin-rebuild -- switch --flake ${setup.systemFlakePath}";

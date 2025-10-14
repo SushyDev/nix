@@ -3,12 +3,13 @@
 	imports = [
 		inputs.nix-plist-manager.homeManagerModules.default
 		inputs.dotfiles.homeManagerModules.default
+		../shared/nix-plist-manager.nix
 	];
 
 	dotfiles.enable = true;
 
 	home.packages = [ 
-		pkgs.go
+		# pkgs.go
 		pkgs.utm
 		pkgs.discord
 		pkgs.blender
@@ -21,57 +22,9 @@
  		signing.key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIImyhNk+raDf5TXHFWOyWIKw8IQapkhwJ5e+iLQydSFR";
  	};
 
-
-	programs.nix-plist-manager = {
+	programs.direnv = {
 		enable = true;
-
-		options.systemSettings = {
-			controlCenter = {
-				wifi = false;
-				bluetooth = false;
-				airdrop = false;
-				focusModes = "never";
-				stageManager = false;
-				screenMirroring = "active";
-				display = "never";
-				sound = "never";
-				nowPlaying = "never";
-				accessibilityShortcuts = {
-					showInMenuBar = false;
-					showInControlCenter = false;
-				};
-				battery = {
-					showInMenuBar = true;
-					showInControlCenter = false;
-				};
-				batteryShowPercentage = true;
-				musicRecognition = {
-					showInMenuBar = false;
-					showInControlCenter = false;
-				};
-				hearing = {
-					showInMenuBar = false;
-					showInControlCenter = false;
-				};
-				fastUserSwitching = {
-					showInMenuBar = false;
-					showInControlCenter = true;
-				};
-				keyboardBrightness = {
-					showInMenuBar = false;
-					showInControlCenter = false;
-				};
-				# menuBarOnly = {
-				# 	spotlight = false;
-				# 	siri = false;
-				# };
-				# automaticallyHideAndShowTheMenuBar = "In Full Screen Only";
-			};
-
-			appearance = {
-				appearance = "Dark";
-			};
-		};
+		nix-direnv.enable = true;
 	};
 
 	# The state version is required and should stay at the version you
