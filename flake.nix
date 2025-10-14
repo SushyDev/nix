@@ -16,18 +16,19 @@
 		};
 
 		nix-plist-manager = {
-			url = "path:/Users/sushy/Documents/Projects/nix-plist-manager-v2";
-			# url = "github:sushydev/nix-plist-manager?ref=main";
+			# url = "path:/Users/sushy/Documents/Projects/nix-plist-manager-v2";
+			url = "github:sushydev/nix-plist-manager?ref=main";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
 		nix-darwin-apps = {
-			url = "path:/Users/sushy/Documents/Projects/nix-darwin-apps";
-			# url = "github:sushydev/nix-darwin-apps?ref=main";
+			# url = "path:/Users/sushy/Documents/Projects/nix-darwin-apps";
+			url = "github:sushydev/nix-darwin-apps?ref=main";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
 		dotfiles = {
+			# url = "path:/Users/sushy/Documents/Projects/dotfiles";
 			type = "git";
 			url = "ssh://git@github.com/sushydev/dotfiles";
 			submodules = true;
@@ -51,7 +52,6 @@
 					};
 				};
 				modules = [
-
 					./modules/pc/configuration.nix 
 
 					home-manager.nixosModules.home-manager
@@ -75,7 +75,6 @@
 				};
 				modules = [
 					./modules/quasar/configuration.nix
-					./modules/quasar/darwin.nix
 
 					nix-plist-manager.darwinModules.default
 					./modules/quasar/plist-manager-v2.nix
