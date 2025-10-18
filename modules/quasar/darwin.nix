@@ -1,12 +1,18 @@
 { lib, pkgs, setup, ... }:
 {
+	# setup groups
+
+	users.knownGroups = [ setup.nixGroupName ];
+
 	users.groups."${setup.nixGroupName}" = {
 		name = setup.nixGroupName;
 		gid = setup.nixGroupId;
 		members = setup.managedUsers;
 	};
 
-	users.knownGroups = [ setup.nixGroupName ];
+	# Setup users
+
+	users.knownUsers = setup.managedUsers ++ [];
 
 	users.users.sushy = {
 		home = "/Users/sushy";
@@ -24,7 +30,7 @@
 		shell = pkgs.zsh;
 	};
 
-	users.knownUsers = setup.managedUsers ++ [];
+	# Setup basic nix conveniences
 
 	system.activationScripts.extraActivation.text = lib.mkAfter ''
 		mkdir -p ${setup.systemFlakePath}
@@ -43,9 +49,9 @@
 		%nix ALL=(ALL) NOPASSWD: ${lib.getExe pkgs.nix} flake update --flake ${setup.systemFlakePath}
 	'';
 
-	environment.pathsToLink = [ 
-		"/share/zsh"
-	];
+	# Other system settings
+
+	environment.pathsToLink = [ "/share/zsh" ];
 
 	time.timeZone = "Europe/Amsterdam";
 
@@ -53,6 +59,4 @@
 	system.stateVersion = 6;
 	system.startup.chime = false;
 
-	# Used for backwards compatibility, please read the changelog before changing.
-	# $ darwin-rebuild changelog
 }

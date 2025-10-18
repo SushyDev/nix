@@ -1,10 +1,16 @@
-{ inputs, ... }:
+{ inputs, setup, lib, pkgs, ... }:
 {
 	imports = [
 		inputs.dotfiles.homeManagerModules.default
 	];
 
-	dotfiles.enable = true;
+	dotfiles = {
+		enable = true;
+		systemFlakePath = setup.systemFlakePath;
+		git = {
+			sshSignPackage = lib.getExe' pkgs._1password-gui "op-ssh-sign";
+		};
+	};
 
  	programs.git = {
  		userEmail = "mail@sushy.dev";

@@ -28,9 +28,10 @@
 		};
 
 		dotfiles = {
-			type = "git";
-			url = "https://github.com/sushydev/dotfiles";
-			submodules = true;
+			url = "path:/Users/sushy/Documents/Projects/dotfiles";
+			# type = "git";
+			# url = "https://github.com/sushydev/dotfiles";
+			# submodules = true;
 		};
 	};
 
@@ -68,7 +69,7 @@
 						managedUsersAndRoot = [ "root" ] ++ managedUsers;
 						nixGroupName = "nix";
 						nixGroupId = 503;
-						systemFlakePath = "/etc/nixdarwin";
+						systemFlakePath = "/private/etc/nixdarwin";
 					};
 				};
 				modules = [

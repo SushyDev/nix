@@ -1,4 +1,11 @@
-{ config, pkgs, inputs, ... }:
+{ 
+	config,
+	inputs,
+	lib,
+	pkgs,
+	setup,
+	...
+}:
 {
 	imports = [
 		inputs.nix-plist-manager.homeManagerModules.default
@@ -6,7 +13,13 @@
 		../shared/nix-plist-manager.nix
 	];
 
-	dotfiles.enable = true;
+	dotfiles = {
+		enable = true;
+		systemFlakePath = setup.systemFlakePath;
+		git = {
+			sshSignPackage = "${lib.getBin pkgs._1password-gui}/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+		};
+	};
 
 	home.packages = [ 
 		# pkgs.go
