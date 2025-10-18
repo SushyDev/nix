@@ -63,14 +63,19 @@
     },
     "dotfiles": {
       "locked": {
-        "lastModified": 1760816364,
-        "narHash": "sha256-vx6P10EdpB3qCcG4E2nbOdUGauanOzZGlNJyg+fV2dQ=",
-        "path": "/Users/sushy/Documents/Projects/dotfiles",
-        "type": "path"
+        "lastModified": 1760816741,
+        "narHash": "sha256-3WNbmT4V//sGIw7FZzCptTGXg+TIMThgbLSFjeTYI9w=",
+        "ref": "refs/heads/main",
+        "rev": "d71125f63229096d80c55ffacfc032ace3d94993",
+        "revCount": 111,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/sushydev/dotfiles"
       },
       "original": {
-        "path": "/Users/sushy/Documents/Projects/dotfiles",
-        "type": "path"
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/sushydev/dotfiles"
       }
     },
     "flake-compat": {
