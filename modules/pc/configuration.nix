@@ -7,7 +7,7 @@
 	];
 
 	environment.systemPackages = [
-		pkgs.opencode
+		# pkgs.opencode
 		pkgs.qemu
 		pkgs.ntfs3g
 		pkgs.cage

@@ -3,7 +3,7 @@
 
 	inputs = {
 		nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-		sushypkgs.url = "github:SushyDev/nixpkgs?ref=master";
+		determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3.11.3";
 
 		nix-darwin = {
 			url = "github:nix-darwin/nix-darwin/master";
@@ -28,17 +28,16 @@
 		};
 
 		dotfiles = {
-			# url = "path:/Users/sushy/Documents/Projects/dotfiles";
 			type = "git";
-			url = "ssh://git@github.com/sushydev/dotfiles";
+			url = "https://github.com/sushydev/dotfiles";
 			submodules = true;
 		};
 	};
 
-	outputs = inputs@{ self, nixpkgs, sushypkgs, nix-darwin, home-manager, nix-plist-manager, ... }: 
-		{
-			
-			nixosConfigurations.pc = nixpkgs.lib.nixosSystem {
+	outputs = inputs@{ self, nixpkgs, determinate, nix-darwin, home-manager, nix-plist-manager, ... }: 
+		let
+			systemPc = rec {
+				system = "x86_64-linux";
 				specialArgs = {
 					inherit inputs;
 					setup = rec {
@@ -59,8 +58,7 @@
 				];
 			};
 
-			# Rename default to hostname later
-			darwinConfigurations."quasar" = nix-darwin.lib.darwinSystem rec {
+			systemQuasar = rec {
 				system = "aarch64-darwin";
 				specialArgs = {
 					inherit inputs system;
@@ -76,12 +74,19 @@
 				modules = [
 					./modules/quasar/configuration.nix
 
+					determinate.darwinModules.default
+					./modules/quasar/determinate.nix
+
 					nix-plist-manager.darwinModules.default
-					./modules/quasar/plist-manager-v2.nix
+					./modules/quasar/plist-manager.nix
 
 					home-manager.darwinModules.home-manager
 					./modules/quasar/home-manager.nix
 				];
 			};
+		in
+		{
+			nixosConfigurations.pc = nixpkgs.lib.nixosSystem systemPc;
+			darwinConfigurations.quasar = nix-darwin.lib.darwinSystem systemQuasar;
 		};
 }

@@ -1,4 +1,4 @@
-{ self, lib, pkgs, setup, ... }:
+{ lib, pkgs, setup, ... }:
 {
 	users.groups."${setup.nixGroupName}" = {
 		name = setup.nixGroupName;

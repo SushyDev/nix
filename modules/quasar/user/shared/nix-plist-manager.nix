@@ -105,7 +105,7 @@
 						automaticallyRearrangeSpacesBasedOnMostRecentUse = false;
 						whenSwitchingToAnApplicationSwitchToAspaceWithOpenWindowsForTheApplication = false;
 						groupWindowsByApplication = false;
-						displaysHaveSeparateSpaces = false;
+						displaysHaveSeparateSpaces = true;
 						dragWindowsToTopOfScreenToEnterMissionControl = false;
 					};
 					hotCorners = {
