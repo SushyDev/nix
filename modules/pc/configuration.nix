@@ -3,8 +3,8 @@
 	imports = [
 		./system/default.nix
 		../shared/oxidation.nix
+		./desktop-manager/kde.nix
 		# ./hardon.nix
-		./system/kde.nix
 	];
 
 	environment.systemPackages = [
@@ -17,7 +17,8 @@
 		pkgs.spotify
 	];
 
-	
+	# 1 Password
+
 	programs._1password.enable = true;
 	programs._1password-gui = {
 		enable = true;
@@ -35,11 +36,15 @@
 		};
 	};
 
+	# SSH
+
 	services.openssh = {
 		enable = true;
 		ports = [ 22 ];
 		extraConfig = "UsePrivilegeSeparation sandbox";
 	};
+
+	# Debloat and system configuration
 
 	services.tlp.enable = false;
 	services.printing.enable = false;
@@ -62,9 +67,14 @@
 	virtualisation.docker.enableOnBoot = false;
 
 	programs.fuse.userAllowOther = true;
+	programs.nano.enable = false;
 	programs.zsh.enable = true;
 
 	i18n.defaultLocale = "en_US.UTF-8";
 	console.earlySetup = true;
 	fonts.packages = [ pkgs.fira-code ];
+
+	time.timeZone = "Europe/Amsterdam";
+
+	system.stateVersion = "25.05";
 }

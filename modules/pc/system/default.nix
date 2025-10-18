@@ -16,10 +16,4 @@
 			chmod -R g+rwX ${setup.systemFlakePath}
 		'';
 	};
-
-	time.timeZone = "Europe/Amsterdam";
-
-	programs.nano.enable = false;
-
-	system.stateVersion = "25.05";
 }

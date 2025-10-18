@@ -15,18 +15,6 @@
 		signing.key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIImyhNk+raDf5TXHFWOyWIKw8IQapkhwJ5e+iLQydSFR";
 	};
 
-	programs.ssh = {
-		enable = true;
-		extraConfig = 
-			let
-				onePassPath = "~/.1password/agent.sock";
-			in
-			"
-				Host *
-					IdentityAgent ${onePassPath}
-			";
-	};
-
 	home.packages = [];
 
 	# The state version is required and should stay at the version you
