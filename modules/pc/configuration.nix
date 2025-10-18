@@ -66,9 +66,20 @@
 	systemd.services.NetworkManager-wait-online.enable = false;
 	virtualisation.docker.enableOnBoot = false;
 
+	# Enable zram for better memory management
+	zramSwap.enable = true;
+	zramSwap.algorithm = "zstd";
+
 	programs.fuse.userAllowOther = true;
 	programs.nano.enable = false;
+	programs.nix-index.enable = true;
 	programs.zsh.enable = true;
+
+	# Enable earlyoom for better memory management
+	services.earlyoom.enable = true;
+
+	# Enable fstrim for SSD optimization
+	services.fstrim.enable = true;
 
 	i18n.defaultLocale = "en_US.UTF-8";
 	console.earlySetup = true;

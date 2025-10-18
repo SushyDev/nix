@@ -52,7 +52,7 @@
 					};
 				};
 				modules = [
-					./modules/pc/configuration.nix 
+					./modules/pc/configuration.nix
 
 					home-manager.nixosModules.home-manager
 					./modules/pc/home-manager.nix
