@@ -63,11 +63,11 @@
     },
     "dotfiles": {
       "locked": {
-        "lastModified": 1760816741,
-        "narHash": "sha256-3WNbmT4V//sGIw7FZzCptTGXg+TIMThgbLSFjeTYI9w=",
+        "lastModified": 1760819132,
+        "narHash": "sha256-awIzsfRhTAE4pu3qi4NpIa+VK9R/wPfjYKJNEPTFUg0=",
         "ref": "refs/heads/main",
-        "rev": "d71125f63229096d80c55ffacfc032ace3d94993",
-        "revCount": 111,
+        "rev": "16e6851801207c30af515f9400313c9af75705f5",
+        "revCount": 113,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/sushydev/dotfiles"
