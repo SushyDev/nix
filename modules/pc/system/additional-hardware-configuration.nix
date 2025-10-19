@@ -1,8 +1,26 @@
 { pkgs, ... }:
 {
+
 	boot = {
-		loader.systemd-boot.enable = true;
-		loader.efi.canTouchEfiVariables = true;
+		loader = {
+			systemd-boot = {
+				enable = true;
+				consoleMode = "max";
+				configurationLimit = 5;
+				windows = {
+					"tiny-11-pro" = {
+						title = "Tiny 11 Pro";
+						efiDeviceHandle = "FS0";
+					};
+				};
+			};
+
+			efi = {
+				canTouchEfiVariables = true;
+				efiSysMountPoint = "/boot";
+			};
+		};
+
 		tmp.cleanOnBoot = true;
 
 		kernelParams = [
@@ -14,7 +32,8 @@
 			"rd.udev.log_level=3"
 		];
 		blacklistedKernelModules = [ "nouveau" ];
-		kernelPackages = pkgs.linuxPackages_latest;
+		# kernelPackages = pkgs.linuxPackages_latest;
+		kernelPackages = pkgs.linuxPackages_cachyos;
 	};
 
 	hardware = {

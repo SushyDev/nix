@@ -4,6 +4,7 @@
 	inputs = {
 		nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 		determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3.11.3";
+		chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # IMPORTANT
 
 		nix-darwin = {
 			url = "github:nix-darwin/nix-darwin/master";
@@ -28,14 +29,14 @@
 		};
 
 		dotfiles = {
-			# url = "path:/Users/sushy/Documents/Projects/dotfiles";
+			# url = "/home/sushy/Documents/Projects/dotfiles";
 			type = "git";
 			url = "https://github.com/sushydev/dotfiles";
 			submodules = true;
 		};
 	};
 
-	outputs = inputs@{ self, nixpkgs, determinate, nix-darwin, home-manager, nix-plist-manager, ... }: 
+	outputs = inputs@{ self, nixpkgs, determinate, chaotic, nix-darwin, home-manager, nix-plist-manager, ... }: 
 		let
 			systemPc = rec {
 				system = "x86_64-linux";
@@ -53,6 +54,7 @@
 				};
 				modules = [
 					./modules/pc/configuration.nix
+					chaotic.nixosModules.default # IMPORTANT
 
 					home-manager.nixosModules.home-manager
 					./modules/pc/home-manager.nix
