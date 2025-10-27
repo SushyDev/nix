@@ -3,10 +3,12 @@
 		enable = true;
 
 		options = {
-			systemSettings = {
-				general = {
-					softwareUpdate = {
-						automaticallyDownloadNewUpdatesWhenAvailable = true;
+			applications = {
+				systemSettings = {
+					general = {
+						softwareUpdate = {
+							automaticallyDownloadNewUpdatesWhenAvailable = true;
+						};
 					};
 				};
 			};

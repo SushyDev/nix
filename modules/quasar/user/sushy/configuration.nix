@@ -11,6 +11,7 @@
 		inputs.nix-plist-manager.homeManagerModules.default
 		inputs.dotfiles.homeManagerModules.default
 		../shared/nix-plist-manager.nix
+		../shared/1password.nix
 	];
 
 	dotfiles = {
