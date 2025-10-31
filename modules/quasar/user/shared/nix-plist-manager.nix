@@ -141,10 +141,10 @@
 					settings = {
 						general = {
 							showTheseItemsOnTheDesktop = {
-								hardDisks = true;
-								externalDisks = true;
-								cdsDvdsAndiPods = true;
-								connectedServers = true;
+								hardDisks = false;
+								externalDisks = false;
+								cdsDvdsAndiPods = false;
+								connectedServers = false;
 							};
 						};
 						sidebar = {
