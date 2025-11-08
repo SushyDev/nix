@@ -29,24 +29,24 @@
 		};
 
 		dotfiles = {
-			# url = "/home/sushy/Documents/Projects/dotfiles";
+			# url = "path:/Users/sushy/Documents/Projects/dotfiles";
 			type = "git";
 			url = "https://github.com/sushydev/dotfiles";
 			submodules = true;
 		};
 	};
 
-	outputs = inputs@{ self, nixpkgs, determinate, chaotic, nix-darwin, home-manager, nix-plist-manager, ... }: 
+	outputs = { self, nixpkgs, determinate, chaotic, nix-darwin, home-manager, nix-plist-manager, ... }@inputs:
 		let
-			systemPc = rec {
+			systemPc = {
 				system = "x86_64-linux";
 				specialArgs = {
 					inherit inputs;
-					setup = rec {
+					setup = {
 						primaryUser = "sushy";
-						managedUsers = [ primaryUser ];
-						managedUsersAndRoot = [ "root" ] ++ managedUsers;
-						nixGroupMembers = [ primaryUser ];
+						managedUsers = [ systemPc.setup.primaryUser ];
+						managedUsersAndRoot = [ "root" ] ++ systemPc.setup.managedUsers;
+						nixGroupMembers = [ systemPc.setup.primaryUser ];
 						nixGroupName = "nix";
 						nixGroupId = 101;
 						systemFlakePath = "/etc/nixos";	
@@ -61,14 +61,13 @@
 				];
 			};
 
-			systemQuasar = rec {
+			systemQuasar = {
 				system = "aarch64-darwin";
 				specialArgs = {
-					inherit inputs system;
-					setup = rec {
-						primaryUser = "sushy";
-						managedUsers = [ primaryUser "work" ];
-						managedUsersAndRoot = [ "root" ] ++ managedUsers;
+					inherit inputs;
+					setup = {
+						managedUsers = [ "sushy" "work" ];
+						managedUsersAndRoot = systemQuasar.specialArgs.setup.managedUsers ++ [ "root" ];
 						nixGroupName = "nix";
 						nixGroupId = 503;
 						systemFlakePath = "/private/etc/nixdarwin";

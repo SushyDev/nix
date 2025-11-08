@@ -1,6 +1,14 @@
 { lib, pkgs, setup, ... }:
+let
+	mkStandardUser = user: {
+		home = "/Users/${user}";
+		createHome = true;
+		isHidden = false;
+		shell = pkgs.zsh;
+	};
+in
 {
-	# setup groups
+	# Setup groups
 
 	users.knownGroups = [ setup.nixGroupName ];
 
@@ -12,36 +20,27 @@
 
 	# Setup users
 
-	users.knownUsers = setup.managedUsers ++ [];
+	users.knownUsers = setup.managedUsers;
 
-	users.users.sushy = {
-		home = "/Users/sushy";
-		createHome = true;
-		isHidden = false;
+	users.users.sushy = mkStandardUser "sushy" // {
 		uid = 502;
-		shell = pkgs.zsh;
 	};
 
-	users.users.work = {
-		home = "/Users/work";
-		createHome = true;
-		isHidden = false;
+	users.users.work = mkStandardUser "work" // {
 		uid = 501;
-		shell = pkgs.zsh;
 	};
 
 	# Setup basic nix conveniences
 
 	system.activationScripts.extraActivation.text = lib.mkAfter ''
-		mkdir -p ${setup.systemFlakePath}
-		chown -R root:nix ${setup.systemFlakePath}
-		chmod -R g+rwX ${setup.systemFlakePath}
+		/bin/mkdir -p ${setup.systemFlakePath}
+		/usr/sbin/chown -R root:nix ${setup.systemFlakePath}
+		/bin/chmod -R g+rwX ${setup.systemFlakePath}
 	'';
 
 	environment.shellAliases = {
-		darwin-switch = "sudo ${lib.getExe pkgs.nix} run nix-darwin/master#darwin-rebuild -- switch --flake ${setup.systemFlakePath}";
-		darwin-update = "sudo ${lib.getExe pkgs.nix} flake update --flake ${setup.systemFlakePath}";
-		darwin-edit = "${lib.getExe pkgs.neovim} ${setup.systemFlakePath}";
+		darwin-switch = "/usr/bin/sudo ${lib.getExe pkgs.nix} run nix-darwin/master#darwin-rebuild -- switch --flake ${setup.systemFlakePath}";
+		darwin-update = "/usr/bin/sudo ${lib.getExe pkgs.nix} flake update --flake ${setup.systemFlakePath}";
 	};
 
 	security.sudo.extraConfig = ''
@@ -55,8 +54,12 @@
 
 	time.timeZone = "Europe/Amsterdam";
 
-	system.primaryUser = lib.head setup.managedUsers;
-	system.stateVersion = 6;
+	# system.primaryUser = lib.head setup.managedUsers;
+	system.stateVersion = 25.11;
 	system.startup.chime = false;
+	networking.computerName = "quasar";
+	networking.hostName = "quasar";
+	networking.localHostName = "quasar";
 
+	security.pam.services.sudo_local.touchIdAuth = true;
 }
