@@ -27,7 +27,11 @@
 		pkgs.vivaldi
 		pkgs.discord
 		pkgs.spotify
-		# pkgs.php83-optimized
+		pkgs.ddev
+		pkgs.mkcert
+		pkgs.xdg-utils
+		pkgs.dbeaver-bin
+		pkgs.php83
 	];
 
 	fonts.packages = [
